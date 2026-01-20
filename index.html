@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognitive Processing Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Floating Background Elements -->
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+
+        <!-- Section 1: Welcome & Instructions -->
+        <section id="welcome-section" class="active-section">
+            <header>
+                <h1>Cognitive Flow</h1>
+                <p class="subtitle">Measure your memory recall & reaction speed.</p>
+            </header>
+            
+            <div class="instructions-card glass-panel">
+                <h2>How it Works</h2>
+                <div class="step">
+                    <span class="icon">🧠</span>
+                    <div class="text">
+                        <h3>Memory Test</h3>
+                        <p>Memorize 10 words in 30 seconds.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="icon">⚡</span>
+                    <div class="text">
+                        <h3>Response Time</h3>
+                        <p>React instantly to visual signals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="start-btn" class="primary-btn">Start Assessment</button>
+        </section>
+
+        <!-- Section 2: Memory Test - Display -->
+        <section id="memory-display-section" class="hidden-section">
+            <div class="timer-container">
+                <svg class="progress-ring" width="120" height="120">
+                    <circle class="progress-ring__circle" stroke="white" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+                </svg>
+                <span id="time-left">30</span>
+            </div>
+            <p class="phase-instruction">Memorize these words</p>
+            <div id="word-grid" class="word-grid">
+                <!-- Words injected by JS -->
+            </div>
+        </section>
+
+        <!-- Section 3: Memory Test - Recall -->
+        <section id="memory-recall-section" class="hidden-section">
+            <h2>Time's Up!</h2>
+            <p class="phase-instruction">Enter as many words as you can remember.</p>
+            <div class="input-area glass-panel">
+                <input type="text" id="recall-input" placeholder="Type a word and press Enter" autocomplete="off">
+                <div id="recall-list" class="tags-container">
+                    <!-- User inputs appear here as tags -->
+                </div>
+            </div>
+            <button id="submit-memory-btn" class="primary-btn">Submit & Continue</button>
+        </section>
+
+        <!-- Section 4: Reaction Test - Instructions -->
+        <section id="reaction-intro-section" class="hidden-section">
+            <div class="glass-panel centered-panel">
+                <div class="icon-large">⚡</div>
+                <h2>Reaction Phase</h2>
+                <p>Click anywhere on the screen as soon as the box turns <strong>GREEN</strong>.</p>
+                <p class="sub-text">We will take the average of 5 attempts.</p>
+                <button id="start-reaction-btn" class="primary-btn">I'm Ready</button>
+            </div>
+        </section>
+
+        <!-- Section 5: Reaction Test - Active -->
+        <section id="reaction-active-section" class="hidden-section full-screen-click-area">
+            <div id="reaction-box" class="reaction-state-waiting">
+                <span id="reaction-text">Wait for Green...</span>
+            </div>
+            <p id="trial-counter">Trial 1 / 5</p>
+        </section>
+
+        <!-- Section 6: Results -->
+        <section id="results-section" class="hidden-section">
+            <h2>Assessment Complete</h2>
+            
+            <div class="results-grid">
+                <div class="result-card glass-panel memory-result">
+                    <h3>Memory Recall</h3>
+                    <div class="score-display">
+                        <span id="memory-score">0</span>
+                        <span class="total">/ 10</span>
+                    </div>
+                    <p id="memory-feedback">Average performance</p>
+                </div>
+
+                <div class="result-card glass-panel reaction-result">
+                    <h3>Avg Response Time</h3>
+                    <div class="score-display">
+                        <span id="reaction-score">0</span>
+                        <span class="unit">ms</span>
+                    </div>
+                    <p id="reaction-feedback">Lightning fast!</p>
+                </div>
+            </div>
+
+            <button id="restart-btn" class="secondary-btn">Test Again</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
